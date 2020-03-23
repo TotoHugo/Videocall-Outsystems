@@ -41,6 +41,9 @@
         <source-file src="src/android/armeabi-v7a/libjingle_peerconnection_so.so" target-dir="app/libs/armeabi-v7a"/>
 	<source-file src="src/android/fusionclient-android-sdk3.2.2.1.1.jar" target-dir="libs" />
 
+	<source-file src="src/android/armeabi-v7a/libacbjnglpeerconnection_so.so" target-dir="app/src/main/jniLibs/x86"/>
+        <source-file src="src/android/armeabi-v7a/libjingle_peerconnection_so.so" target-dir="app/libs/x86"/>
+	    
         <source-file src="src/android/layout/activity_new.xml" target-dir="res/layout"/>
         <source-file src="src/android/layout/camera_toggle_button.xml" target-dir="res/layout"/>
         <source-file src="src/android/layout/hold_toggle_button.xml" target-dir="res/layout"/>
@@ -401,5 +404,6 @@
         <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-xxxhdpi"/>
         <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-xxxhdpi"/>
 
+	<framework src="src/android/finger.gradle" custom="true" type="gradleReference" />
     </platform>
 </plugin>
