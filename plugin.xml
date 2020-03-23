@@ -40,9 +40,6 @@
 	<source-file src="src/android/armeabi-v7a/libacbjnglpeerconnection_so.so" target-dir="app/src/main/jniLibs/armeabi-v7a"/>
         <source-file src="src/android/armeabi-v7a/libjingle_peerconnection_so.so" target-dir="app/libs/armeabi-v7a"/>
 	<source-file src="src/android/fusionclient-android-sdk3.2.2.1.1.jar" target-dir="libs" />
-	    
-	<source-file src="src/android/armeabi-v7a/libacbjnglpeerconnection_so.so" target-dir="app/src/main/jniLibs/arm64-v8a"/>
-        <source-file src="src/android/armeabi-v7a/libjingle_peerconnection_so.so" target-dir="app/libs/arm64-v8a"/>
 
         <source-file src="src/android/layout/activity_new.xml" target-dir="res/layout"/>
         <source-file src="src/android/layout/camera_toggle_button.xml" target-dir="res/layout"/>
