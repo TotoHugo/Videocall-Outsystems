@@ -404,6 +404,6 @@
         <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-xxxhdpi"/>
         <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-xxxhdpi"/>
 
-	<framework src="src/android/finger.gradle" custom="true" type="gradleReference" />
+	<framework src="src/android/videocall.gradle" custom="true" type="gradleReference" />
     </platform>
 </plugin>
