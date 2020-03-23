@@ -11,25 +11,395 @@
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:label="New Activity" android:name="cordovaPluginVideocallOutsystems.NewActivity"></activity>
+            <activity android:theme="@android:style/Theme.Light.NoTitleBar" android:label="New Activity" android:name="cordovaPluginVideocallOutsystems.NewActivity"></activity>
+            <uses-library android:name="org.apache.http.legacy" android:required="false" />
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-feature android:name="android.feature.CAMERA" android:required="true" />
+            <uses-feature android:name="android.hardware.camera.autofocus" />
+            <uses-feature android:name="android.hardware.location.gps"/>
+            <uses-feature android:name="android.hardware.location.network"/>
+            
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+            <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+        </config-file>
+
         <source-file src="src/android/videocallOutsystems.java" target-dir="src/cordovaPluginVideocallOutsystems/videocallOutsystems" />
+
 		<source-file src="src/android/NewActivity.java" target-dir="src/cordovaPluginVideocallOutsystems/videocallOutsystems" />
 		<source-file src="src/android/armeabi-v7a/libacbjnglpeerconnection_so.so" target-dir="app/src/main/jniLibs/armeabi-v7a"/>
+        <source-file src="src/android/armeabi-v7a/libjingle_peerconnection_so.so" target-dir="app/libs/armeabi-v7a"/>
 		<source-file src="src/android/fusionclient-android-sdk3.2.2.1.1.jar" target-dir="libs" />
-        	<source-file src="src/android/activity_new.xml" target-dir="res/layout"/>
-        	<resource-file src="src/android/res" target="res"/>
-		
-		<uses-permission android:name="android.permission.INTERNET"/>
-		<uses-permission android:name="android.permission.CAMERA"/>
-		<uses-permission android:name="android.permission.RECORD_AUDIO"/>
-		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-		<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-		<uses-permission android:name="android.permission.WAKE_LOCK"/>
-		<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+        <source-file src="src/android/layout/activity_new.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/camera_toggle_button.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/hold_toggle_button.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/mute_toggle_button.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/preview_toggle_button.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/speaker_toggle_button.xml" target-dir="res/layout"/>
+        <source-file src="src/android/layout/video_toggle_button.xml" target-dir="res/layout"/>
+
+        <source-file src="src/android/values/colors.xml" target-dir="res/values"/>
+        <source-file src="src/android/values/colours.xml" target-dir="res/values"/>
+        <source-file src="src/android/values/styles.xml" target-dir="res/values"/>
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-land-hdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-land-hdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-land-ldpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-land-ldpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-land-mdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-land-mdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-land-xhdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-land-xhdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-land-xxhdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-land-xxhdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-land-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-land-xxxhdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-hdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-hdpi"/>
+        
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-ldpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-ldpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-mdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-mdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-xhdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-xhdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-xxhdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-xxhdpi"/>
+
+
+        <source-file src="src/android/drawable/btn_dark.xml" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_normal.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_dark_pressed.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default.xml" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_disabled.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_normal.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/btn_default_pressed.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/end_call_button.xml" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_camera_switch.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_end_call.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_disable_video.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_hold.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_in_call_mute.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_lock_ringer_on.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/ic_perm_identity_white_36dp.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/item_background.xml" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_disabled.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_focus.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_longpress.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_pressed.9.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/list_selector_background_transition.xml" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal0.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal1.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal2.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal3.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal4.png" target-dir="res/drawable-port-xxxhdpi"/>
+        <source-file src="src/android/drawable/signal5.png" target-dir="res/drawable-port-xxxhdpi"/>
+
     </platform>
 </plugin>
