@@ -83,7 +83,7 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
 
     private String package_name = "";
 
-    private String agent = "7704@10.20.234.90"; //parameterized
+    private String agent = "sip:7704@10.20.234.90"; //parameterized
 
     com.alicecallsbob.fcsdk.android.phone.Call call1;
 	UC mUC;
@@ -270,6 +270,9 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
 
     @Override
     public void onBackPressed() {
+        if(call1 != null){
+            call1.end();
+        }
         finish();
     }
 
@@ -284,8 +287,6 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
         mHold = false;
         mScale = false;
     }
-
-    
 
     @Override
     public void onStatusChanged(final com.alicecallsbob.fcsdk.android.phone.Call call, final CallStatus status) {
@@ -493,7 +494,7 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
         else
         if (v.getId() == getApplication().getResources().getIdentifier("switchSpeaker", "id", package_name)) {
             enableSpeaker(!mIsSpeakerActive);
-            toggleImage = (ImageView) view.findViewById(getApplication().getResources().getIdentifier("holdToggleImage", "id", package_name));
+            toggleImage = (ImageView) view.findViewById(getApplication().getResources().getIdentifier("speakerToggleImage", "id", package_name));
             final boolean isChecked = "ON".equals(toggleImage.getTag());
             final boolean check = !isChecked;
             if (check) {
@@ -509,7 +510,7 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
         else
         if (v.getId() == getApplication().getResources().getIdentifier("switchHold", "id", package_name)) {
             putOnHold(!mHold);
-            toggleImage = (ImageView) view.findViewById(getApplication().getResources().getIdentifier("speakerToggleImage", "id", package_name));
+            toggleImage = (ImageView) view.findViewById(getApplication().getResources().getIdentifier("holdToggleImage", "id", package_name));
             final boolean isChecked = "ON".equals(toggleImage.getTag());
             final boolean check = !isChecked;
             if (check) {
@@ -563,12 +564,14 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
         }
     }
     protected void setSpeakerphoneOn(final boolean on) {
+        LOG.d(LOG_TAG, "[ setSpeakerphoneOn ] : " + on);
         if (mAudioManager != null && mAudioManager.isSpeakerphoneOn() != on) {
             mAudioManager.setSpeakerphoneOn(on);
         }
     }
 
     protected void muteAudio(final boolean mute) {
+        LOG.d(LOG_TAG, "[ muteAudio ] : " + mute);
         if (mute != mIsAudioMuted) {
             mIsAudioMuted = mute ? true : false;
             // if mute is checked we disable audio and vice versa
@@ -663,8 +666,8 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
 		int width = size.x;
 		int height = size.y;
 		final Point remoteSize = new Point(width,height);
-		remoteSize.x *= 0.9f;
-		remoteSize.y = (int) (remoteSize.x * 0.7f);
+		// remoteSize.x *= 1.0f;
+		remoteSize.y = (int) (remoteSize.y * 0.9f);
 		videoSurface = mPhone.createVideoSurface(getApplicationContext(), remoteSize, NewActivity.this);
 		RelativeLayout.LayoutParams remoteLp = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
