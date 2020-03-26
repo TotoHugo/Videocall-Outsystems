@@ -5,4 +5,13 @@ android {
         }
     }
 }
-manifestPlaceholders = [usesCleartextTraffic:"true"]
+
+buildTypes {
+        debug {
+            manifestPlaceholders = [usesCleartextTraffic:"true"]
+        }
+
+        release {
+            manifestPlaceholders = [usesCleartextTraffic:"false"]
+        }
+    }
