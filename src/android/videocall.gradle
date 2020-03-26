@@ -4,7 +4,4 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
-    buildTypes {
-        manifestPlaceholders = [usesCleartextTraffic:"true"]
-    }
 }
