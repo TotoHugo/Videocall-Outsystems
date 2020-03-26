@@ -25,9 +25,8 @@ android {
             targetSdkVersion cdvTargetSdkVersion
         }
     }
-}
 
-buildTypes {
+    buildTypes {
         debug {
             manifestPlaceholders = [usesCleartextTraffic:"true"]
         }
@@ -36,3 +35,5 @@ buildTypes {
             manifestPlaceholders = [usesCleartextTraffic:"false"]
         }
     }
+
+}
