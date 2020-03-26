@@ -150,7 +150,8 @@ public class NewActivity extends Activity implements UCListener, PhoneListener, 
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         RequestBody body = RequestBody.create(mediaType, "assist=assist-1111111-T-1&reasin=http://10.20.219.168:8080&reaspub=reasdev.bca.co.id&serverport=8443&sip=test");
         Request request = new Request.Builder()
-        .url("http://202.6.215.244:8080/remsessionglobal.php")
+        //.url("http://202.6.215.244:8080/remsessionglobal.php")
+	.url("https://ryan-surjadi.outsystemscloud.com/expose/rest/RESTAPI1/CallSession")
         .method("POST", body)
         .addHeader("Content-Type", "application/x-www-form-urlencoded")
         .build();
