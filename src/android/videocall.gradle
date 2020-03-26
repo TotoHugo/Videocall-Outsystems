@@ -1,28 +1,7 @@
-// minSdkVersion, maxSdkVersion and targetSdkVersion
-ext.cdvMinSdkVersion = cdvMinSdkVersion == null ? defaultMinSdkVersion : Integer.parseInt('' + cdvMinSdkVersion)
-if (cdvMaxSdkVersion != null) {
-    ext.cdvMaxSdkVersion = Integer.parseInt('' + cdvMaxSdkVersion)
-}
-ext.cdvTargetSdkVersion = cdvTargetSdkVersion == null ? defaultTargetSdkVersion  : Integer.parseInt('' + cdvTargetSdkVersion)
-
 android {
     defaultConfig {
         ndk {
             abiFilters "armeabi-v7a", "x86"
-        }
-        versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
-        applicationId privateHelpers.extractStringFromManifest("package")
-
-        if (cdvMinSdkVersion != null) {
-            minSdkVersion cdvMinSdkVersion
-        }
-
-        if (cdvMaxSdkVersion != null) {
-            maxSdkVersion cdvMaxSdkVersion
-        }
-
-        if(cdvTargetSdkVersion != null) {
-            targetSdkVersion cdvTargetSdkVersion
         }
     }
 
