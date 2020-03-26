@@ -4,15 +4,4 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
-
-    buildTypes {
-        debug {
-            manifestPlaceholders = [usesCleartextTraffic:"true"]
-        }
-
-        release {
-            manifestPlaceholders = [usesCleartextTraffic:"false"]
-        }
-    }
-
 }
